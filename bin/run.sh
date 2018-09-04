@@ -8,7 +8,7 @@ export PATH="$BUILD_DIR/vendor/sfdx/jq:$PATH"
 
 KEYFILE=/app/server.key
 
-echo $JWT_KEY >> $KEYFILE
+echo $SSH_KEY | base64 -d >> $KEYFILE
 
 echo 'Authorising with the Salesforce CLI for user '$SF_USER
 sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile $KEYFILE --username $SF_USER --setdefaultdevhubusername --setalias my-hub-org
