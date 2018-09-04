@@ -1,7 +1,11 @@
 #!/bin/bash
 
 export BUILD_DIR=/app/sfdx
+export BACKUP_DIR=/app/backups
+
 mkdir $BUILD_DIR
+mkdir $BACKUP_DIR
+
 export PATH="$BUILD_DIR/vendor/sfdx/cli/bin:$PATH"
 export PATH="$BUILD_DIR/vendor/sfdx/jq:$PATH"
 
@@ -13,7 +17,7 @@ echo 'Authorising with the Salesforce CLI for user '$SF_USER
 sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile $KEYFILE --username $SF_USER --setdefaultdevhubusername --setalias my-hub-org
 
 echo 'Fetching metadata specified in package.xml'
-sfdx force:mdapi:retrieve -r /app/backups -u $SF_USER -k /app/bin/package.xml
+sfdx force:mdapi:retrieve -r $BACKUP_DIR -u $SF_USER -k /app/bin/package.xml
 
 
 echo 'writing results to S3 bucket'
@@ -44,6 +48,6 @@ function putS3
 
 TSTAMP=$(date +%s)
 
-putS3 "/app/backups/" "unpackaged.zip" "/salesforce-cli/backups/$TSTAMP/"
+putS3 $BACKUP_DIR "unpackaged.zip" "/salesforce-cli/backups/$TSTAMP/"
 
 echo 'completed writing - exiting'
