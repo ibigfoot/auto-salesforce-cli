@@ -13,7 +13,7 @@ echo 'Fetching metadata specified in package.xml'
 sfdx force:mdapi:retrieve -r ../backups -u $SF_USER -k /app/bin/package.xml
 
 TIMESTAMP = $(date +%s) + ".zip"
-mv /backups/unpackaged.zip $TIMESTAMP
+mv /backups/unpackaged.zip /backups/$TIMESTAMP
 
 echo 'writing results to S3 bucket'
 S3KEY=$BUCKETEER_AWS_ACCESS_KEY_ID
