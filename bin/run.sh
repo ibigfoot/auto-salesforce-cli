@@ -12,8 +12,6 @@ sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile /app/server.key --u
 echo 'Fetching metadata specified in package.xml'
 sfdx force:mdapi:retrieve -r ../backups -u $SF_USER -k /app/bin/package.xml
 
-TIMESTAMP = $(date +%s) + ".zip"
-mv /backups/unpackaged.zip /backups/$TIMESTAMP
 
 echo 'writing results to S3 bucket'
 S3KEY=$BUCKETEER_AWS_ACCESS_KEY_ID
@@ -39,5 +37,7 @@ function putS3
     "https://$bucket.s3.amazonaws.com$aws_path$file"
 }
 
+TIMESTAMP = $(date +%s)
+
 for file in "/backups"/*; do
-  putS3 "/backups" "${file##*/}" "/salesforce-cli/backups/"
+  putS3 "/backups" "${file##*/}" "/salesforce-cli/backups/$TIMESTAMP/"
