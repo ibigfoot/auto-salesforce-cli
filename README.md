@@ -145,9 +145,33 @@ Running bash on ⬢ afternoon-brushlands-30858... up, run.1698 (Free)
 Updating PATH to include Salesforce CLI ...
 ~ $ 
 ```
-From here, it's simple to run the script to get things kicked off.
+From here, it's simple to run the script to get things kicked off... your output should look something like
 ```
-bin/run.sh
+$ bin/run.sh
+Authorising with the Salesforce CLI for user <YOUR_SF_USER_VAR>
+WARNING: You acknowledge and agree that the CLI tool may collect usage information, user environment, and crash reports for the purposes of providing services or functions that are relevant to use of the CLI tool and product improvements.
+Successfully authorized <YOUR_SF_USER_VAR> with org ID <YOUR_ORG>
+Fetching metadata specified in package.xml
+Retrieving source...
+
+=== Status
+Status:  InProgress
+jobid:  09S7F000003cqbVUAQ
+
+
+=== Status
+Status:  InProgress
+jobid:  09S7F000003cqbVUAQ
+
+
+=== Result
+Status:  Succeeded
+jobid:  09S7F000003cqbVUAQ
+
+Wrote retrieve zip to /app/backups/unpackaged.zip.
+writing results to S3 bucket
+wrote unpackaged.zip to https://<YOUR_BUCKETEER_AWS_ADDRESS>/salesforce-cli/backups/1536103260/unpackaged.zip
+completed writing - exiting
 ```
 
 ## 6. Schedule.
