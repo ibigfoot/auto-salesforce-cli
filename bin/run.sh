@@ -6,6 +6,10 @@ export BUILD_DIR=/app/sfdx
 export PATH="$BUILD_DIR/vendor/sfdx/cli/bin:$PATH"
 export PATH="$BUILD_DIR/vendor/sfdx/jq:$PATH"
 
+KEYFILE=/app/server.key
+
+cat $JWT_KEY >> $KEYFILE
+
 echo 'Authorising with the Salesforce CLI for user '$SF_USER
 sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile /app/server.key --username $SF_USER --setdefaultdevhubusername --setalias my-hub-org
 
