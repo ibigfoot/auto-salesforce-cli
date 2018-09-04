@@ -39,7 +39,6 @@ function putS3
 
 TSTAMP=$(date +%s)
 
-for file in "/backups"/*; do
-  putS3 "/app/backups" "${file##*/}" "/salesforce-cli/backups/$TSTAMP/"
-done
+putS3 "/app/backups/" "unpackaged.zip" "/salesforce-cli/backups/$TSTAMP/"
+
 echo 'completed writing - exiting'
