@@ -40,4 +40,4 @@ function putS3
 TIMESTAMP = $(date +%s)
 
 for file in "/backups"/*; do
-  putS3 "/backups" "${file##*/}" "/salesforce-cli/backups/$TIMESTAMP/"
+  putS3 "/app/backups" "${file##*/}" "/salesforce-cli/backups/$TIMESTAMP/"
