@@ -36,7 +36,7 @@ function putS3
     -H "Authorization: AWS ${S3KEY}:$signature" \
     "https://$bucket.s3.amazonaws.com$aws_path$file"
 
-    echo "wrote $file to $aws_path"
+    echo "wrote $file to https://$bucket.s3.amazonaws.com$aws_path$file"
 }
 
 TSTAMP=$(date +%s)
