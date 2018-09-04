@@ -1,8 +1,7 @@
 #!/bin/bash
 
-
 export BUILD_DIR=/app/sfdx
-
+mkdir $BUILD_DIR
 export PATH="$BUILD_DIR/vendor/sfdx/cli/bin:$PATH"
 export PATH="$BUILD_DIR/vendor/sfdx/jq:$PATH"
 
