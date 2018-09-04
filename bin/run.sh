@@ -10,7 +10,7 @@ echo 'Authorising with the Salesforce CLI for user '$SF_USER
 sfdx force:auth:jwt:grant --clientid $CLIENT_ID --jwtkeyfile /app/server.key --username $SF_USER --setdefaultdevhubusername --setalias my-hub-org
 
 echo 'Fetching metadata specified in package.xml'
-sfdx force:mdapi:retrieve -r ../backups -u <username> -k ./package.xml
+sfdx force:mdapi:retrieve -r ../backups -u $SF_USER -k ./package.xml
 
 TIMESTAMP = $(date +%s) + ".zip"
 mv /backups/unpackaged.zip $TIMESTAMP
