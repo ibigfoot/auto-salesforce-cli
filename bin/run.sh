@@ -37,7 +37,7 @@ function putS3
     "https://$bucket.s3.amazonaws.com$aws_path$file"
 }
 
-TIMESTAMP = $(date +%s)
+TSTAMP=$(date +%s)
 
 for file in "/backups"/*; do
-  putS3 "/app/backups" "${file##*/}" "/salesforce-cli/backups/$TIMESTAMP/"
+  putS3 "/app/backups" "${file##*/}" "/salesforce-cli/backups/$TSTAMP/"
